@@ -1,8 +1,8 @@
 const {model , Schema} = require("mongoose")
 
 const LinkSchema = new Schema({
-    orginalUrl:String,
-    shortUrl:String,
+    link:String,
+    short:String,
 })
 
 const LinkModel = model('Link', LinkSchema)

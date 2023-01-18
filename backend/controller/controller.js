@@ -1,25 +1,25 @@
 const Link = require('../model/model');
 
 exports.createBoginoo = async (request, response) => {
-  if (!request.body?.orginalUrl) {
-    return response.status(400).json({ message: "originalUrl is required!" });
-  } else {
+  console.log(request.body)
+  // if (!request.body?.orginalUrl) {
+  //   console.log('aaaa')
+  //   return response.status(200).json({ message: "originalURL is required!" });
+  // } else {
     const originalURL = request.body;
     try {
       const link = await Link.create(originalURL);
+      console.log(link._id)
       const updatedLink = await Link.findByIdAndUpdate(link._id, {
-        shortUrl: "http://localhost:8000/" + link._id,
+        short: "http://localhost:3000/" + link._id,
       });
-      console.log("first");
-      response.status(201).send({ message: "Successfully created!" });
+      console.log({updatedLink});
+      response.status(201).send({ message: "Successfully created!" , data: {...updatedLink._doc, short: "http://localhost:3000/" + updatedLink._id}});
     } catch (error) {
       response.status(404).send({ message: "Error", error });
     }
   }
-} 
-
-
-
+// } 
 
 // const Link = require('../model/model')
 

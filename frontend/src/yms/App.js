@@ -1,9 +1,9 @@
-import React, {useState, useRef, useDebugValue} from "react";
+import axios from 'axios';
+import React, {useState} from "react";
 import { Header } from "./pages/Header";
 import logo from "./yms/logo.png";
 import {List} from "./pages/mm";
 import {Footer} from "./pages/Footer";
-
 export const App = () => {
 
   const styles = {
@@ -51,23 +51,41 @@ export const App = () => {
       marginTop:'10vh'
     }
   };
-  const [text, setText] = useState('');
-  const [link, setLink] = useState();
+  // const [text, setText] = useState('');
+  // const [link, setLink] = useState();
   // const[change, setChange] = useState('');
-  const save = () => {
-    setLink (text)
-  }
+  const [link, setLink] = useState('');
+  const [short, setShort] = useState('');
+  const [res1, setRes1] = useState();
+  const [res2, setRes2] = useState();
+
+  const save = async () => {
+    await axios
+      .post("http://localhost:8000/", {link : link , short : short})
+      .then((response) => {
+        console.log(response)
+        setRes1(response.data.data.link);
+        setRes2(response.data.data.short);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      setLink("")
+      setShort("")
+  };
+  // const save = () => {
+  // }
   return (
     <div style={styles.container}>
       <Header />
       <div style={styles.body}>
         <img style={styles.logo} src={logo} />
         <div style={styles.middle}>
-          <input placeholder="https://www.web-huudas.mn" style={styles.input} onChange={(e) => setText(e.target.value)}/>
+          <input placeholder="https://www.web-huudas.mn" style={styles.input} onChange={(e) => setLink(e.target.value)}/>
           <button  style={styles.button} onClick={save}>Богиносгох</button>
         </div>
         <div style={styles.textBox}>
-          {link && <List text={link}/>}
+          {res1 && <List link={res1} short={res2}/>}
         </div>
       </div>
       <Footer/>

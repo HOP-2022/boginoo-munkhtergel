@@ -1,14 +1,13 @@
 import React from "react";
-
-export const List = ({ text }) => {
+export const List = ({ link, short }) => {
   return (
     <div>
       <p style={{ color: "grey", fontSize: "1.2vh" }}>Өгөгдсөн холбоос:</p>
-      <p>{text}</p>
+      <p>{link}</p>
       <p style={{ color: "grey", fontSize: "1.2vh", marginTop: "5vh" }}>
         Богино холбоос:
       </p>
-      <p>{text}</p>
+      <p>{short}</p>
       <button
         style={{
           width: "192px",

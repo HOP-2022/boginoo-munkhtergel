@@ -1,0 +1,19 @@
+{
+  "name": "boginoo-munkhtergel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HOP-2022/boginoo-munkhtergel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HOP-2022/boginoo-munkhtergel/issues"
+  },
+  "homepage": "https://github.com/HOP-2022/boginoo-munkhtergel#readme"
+}
